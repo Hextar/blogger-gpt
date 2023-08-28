@@ -16,10 +16,12 @@ async def main():
         # Record user's voice and transcript it to text
         user_message = await record_and_transcribe()
 
+        # Not blocking the UX if the user message being empty
         if (user_message == None):
             print_colored(get_name(), "I didn't got your last phrase, can you please repeat?\n\n")
             continue
 
+        # If a terminal condition is encountered exit immediately
         if check_termination_condition(user_message):
             print_colored("LolCat", "KTHXBYE\n\n")
             break  # This will exit the loop immediately
@@ -41,4 +43,5 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
+        # Pretty print reacting to a SIGINT
         print_colored("LolCat", "KTHXBYE\n\n")
