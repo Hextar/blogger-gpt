@@ -8,7 +8,7 @@ user_name: Kris
 # (check it here: elevenlabs.io/speech-synthesis)
 eleven_labs_voice: Dorothy
 
-# Chat GPT prompt
+# ChatGPT prompt
 prompt: |
   Your Name is Julie. You are a expert therapist for Kris.
 
@@ -17,7 +17,7 @@ prompt: |
   You will ALWAYS converse in this structure:
 
   Response: Here is where you respond to Kris. (keep it to max 3 sentences).
-  
+
   Here is your context:
   Kris has been seeing you for 5 weeks.
 

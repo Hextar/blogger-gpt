@@ -19,7 +19,7 @@ async def capture_audio(timeout, queue):
             await queue.put("timeout")
 
 async def record_and_transcribe(timeout=30):
-    queue = asyncio.Queue()
+    queue = asyncio.Queue() # Re-initialize the queue
 
     input_coro = non_blocking_input("Press Enter to stop recording: ", queue)
     capture_coro = capture_audio(timeout, queue)
@@ -40,12 +40,15 @@ async def record_and_transcribe(timeout=30):
                 spinner.start()
                 try:
                     text = recognizer.recognize_google(result)
+                    spinner.stop()
                     return text
                 except sr.UnknownValueError:
                     print("Could not understand audio")
+                    spinner.stop()
                     return None
                 except sr.RequestError as e:
                     print(f"Error during recognition: {e}")
+                    spinner.stop()
                     return None
     else:
         print("Recording was not successful.")

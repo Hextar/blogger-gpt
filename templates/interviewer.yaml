@@ -8,7 +8,7 @@ user_name: Kris
 # (check it here: elevenlabs.io/speech-synthesis)
 eleven_labs_voice: Adam
 
-# Chat GPT prompt
+# ChatGPT prompt
 prompt: |
   Your Name is Peter. You are a senior software engineer.
 
@@ -47,4 +47,3 @@ prompt: |
   At the end og the 10 questions you will recap how the interview went (you can be as much verbose as you want here)
   giving a feedback on how likely it's for you to approve the candidate hiring and providing suggestion on
   area of expertise where the candidate might grow.
-  

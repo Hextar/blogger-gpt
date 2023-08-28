@@ -12,7 +12,7 @@ from utils.terminate import check_termination_condition
 
 async def main():
     print("---------------------------------\n")
-    print(f"Starting template {get_template()}" + (" [🔇 Silent mode]" if get_silent() else "") + "\n")
+    print(f"Starting template \033[1m{get_template()}\033[0m" + (" [🔇 Silent mode]" if get_silent() else "") + "\n")
 
     while True:
         print("---------------------------------\n")
@@ -20,9 +20,8 @@ async def main():
         # Record user's voice and transcript it to text
         user_message = await record_and_transcribe()
 
-        # Not blocking the UX if the user message being empty
+        # Not blocking the UX if the user message is empty
         if (user_message is None):
-            count = count + 1
             print_colored(
                 get_user_name(),
                 "I didn't got your last phrase, can you please repeat?\n\n"
@@ -34,11 +33,13 @@ async def main():
             print_colored("LolCat", "KTHXBYE\n\n")
             break  # This will exit the loop immediately
 
-        # Send user's transcript to Chat GPT to receive a response
+        # Print the user transcript
+        print_colored(get_user_name(), f"{user_message}\n\n")
+
+        # Send user's transcript to Chat GPT to get a response
         response = chatgpt(user_message)
 
-        # Print the current transcript
-        print_colored(get_user_name(), f"{user_message}\n\n")
+        # Print ChatGPT transcript
         print_colored(get_chatgpt_name(), f"{response}\n\n")
 
         if (not get_silent()):
@@ -56,11 +57,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-
-# if __name__ == "__main__":
-#     try:
-#         asyncio.run(main())
-#     except KeyboardInterrupt:
-#         # Pretty print reacting to a SIGINT
-#         print_colored("LolCat", "KTHXBYE\n\n")
