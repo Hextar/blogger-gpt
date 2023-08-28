@@ -47,5 +47,5 @@ You can choose between:
 - eleven_monolingual_v2
 
 # TODO
-- improve the record algorithm to ask the user to press Enter when the recording concluded
-- implement chat with memory, storing locally the chat transcript to send it to future chats`
+- improve the record algorithm to ask the user to press Enter when the recording concluded;
+- implement chat with memory, storing locally the chat transcript to send it to future chats.
