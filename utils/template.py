@@ -23,15 +23,6 @@ def load_template(file_name=get_template()):
 
     return data
 
-
-def get_lang():
-    """
-    Get the lang that ChatGPT should use.
-    """
-    data = load_template()
-    return data.get('lang', 'en')
-
-
 def get_chatgpt_name():
     """
     Get the name that ChatGPT should use.
@@ -55,6 +46,13 @@ def get_user_name():
     data = load_template()
     return data.get('user_name', 'User')
 
+def get_chat_gpt_goes_first():
+    """
+    Get if ChatGPT will start the conversation.
+    """
+    data = load_template()
+    chat_goes_first = data.get('chat_got_goes_first', 0)
+    return chat_goes_first == '1' or chat_goes_first == 1
 
 def get_prompt():
     """

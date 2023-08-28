@@ -8,6 +8,11 @@ user_name: Kris
 # (check it here: elevenlabs.io/speech-synthesis)
 eleven_labs_voice: Adam
 
+# Decide who's going to talk first in the chat
+# 0 means the user will start
+# 1 means ChatGPT goes first
+chat_got_goes_first: 1
+
 # ChatGPT prompt
 prompt: |
   Your Name is Peter. You are a senior software engineer.
@@ -30,7 +35,7 @@ prompt: |
 
   You will ALWAYS converse in this structure:
 
-  1. Question: Ask the candidate a question from the list above. (keep it to max 6 sentences).
+  1. Question: Ask the candidate a question from the list above. (keep it to max 4 sentences).
 
   2. Response: Here is where Kris answer. 
 

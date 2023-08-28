@@ -15,7 +15,14 @@ def get_silent():
     """
     Get the silent option.
     """
-    return os.getenv('SILENT')
+    silent = os.getenv('SILENT')
+    return silent == '1' or silent == 1
+
+def get_reading_speed():
+    """
+    Get the reading speed option.
+    """
+    return os.getenv('READING_SPEED')
 
 
 def get_open_ai_api_key():
