@@ -1,4 +1,4 @@
-These are the templates you can choose from to try this
+These directory contains the templates you can choose from to try this
 speech-to-speech implementation.
 
 # Choose a different template
