@@ -1,7 +1,5 @@
 colorama==0.4.6
 keyboard==0.13.5
-protobuf==4.24.2
-pygame==2.5.1
 python-dotenv==1.0.0
 sounddevice==0.4.6
 soundfile==0.12.1
