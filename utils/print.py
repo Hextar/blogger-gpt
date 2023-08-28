@@ -1,5 +1,6 @@
 import time
 from colorama import Fore, Style, init
+
 from utils.template import get_user_name, get_chatgpt_name
 
 init()

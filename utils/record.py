@@ -5,7 +5,7 @@ import speech_recognition as sr
 recognizer = sr.Recognizer()
 
 
-async def record_and_transcribe():
+async def record_and_transcribe(timeout=30):
     """
     Call the record function to record the user voice, waits for the
     recording to complete and then perform the recording transcript
@@ -17,8 +17,7 @@ async def record_and_transcribe():
         with sr.Microphone() as source:
             print("Listening...")
             try:
-                # Set a timeout (5 seconds in this case)
-                audio = recognizer.listen(source, timeout=5)
+                audio = recognizer.listen(source, timeout)
                 return audio
             except sr.WaitTimeoutError:
                 print("Recording timed out.")

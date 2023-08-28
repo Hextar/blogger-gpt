@@ -1,4 +1,5 @@
 from elevenlabs import generate, play
+
 from utils.template import get_eleven_labs_voice
 from utils.config import get_eleven_labs_api_key, get_eleven_labs_model
 

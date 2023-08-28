@@ -1,7 +1,8 @@
+asyncio
 colorama==0.4.6
-keyboard==0.13.5
 python-dotenv==1.0.0
-sounddevice==0.4.2
-soundfile==0.10.3.post1
+PyYAML==6.0.1
+SpeechRecognition==3.10.0
 PyAudio
+openai
 elevenlabs
