@@ -20,8 +20,5 @@ Change it as the eleven labs voice (within `.env`) at your pleasure and re run t
 `main.py` file.
 
 # TODO
-- improve the record algorithm to ask the user to pess Enter when the recording concluded
-- improve the record algorithm to automatically detect when the record has finished
-- improve the template+voice logic to allow defining an eleven labs voice and the user name
-  directly from the template file
-- implemente chat with memory, storing locally the chat transcript to send it to future chats`
+- improve the record algorithm to ask the user to press Enter when the recording concluded
+- implement chat with memory, storing locally the chat transcript to send it to future chats`

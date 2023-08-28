@@ -1,5 +1,6 @@
 # Do not use punctuation here
 TERMINAL_CONDITIONS = [
+    "Computer and program",
     "Computer end program",
     "Computer arch",
     "Goodbye",
@@ -7,8 +8,11 @@ TERMINAL_CONDITIONS = [
     "Interrupt simulation"
 ]
 
-"""
-Check if the current user message contains a termination condition
-"""
 def check_termination_condition(user_message):
-    return any(terminal_condition.lower() in user_message.lower() for terminal_condition in TERMINAL_CONDITIONS)
+    """
+    Check if the current user message contains a termination condition
+    """
+    try:
+        return any(terminal_condition.lower() in user_message.lower() for terminal_condition in TERMINAL_CONDITIONS)
+    except AttributeError:
+        return False

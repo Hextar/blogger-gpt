@@ -1,6 +1,6 @@
 import time
 from colorama import Fore, Style, init
-from utils.config import get_name, get_elevenl_labs_name
+from utils.template import get_user_name, get_chatgpt_name
 
 init()
 
@@ -30,12 +30,14 @@ Args:
 def print_colored(agent, text):
     agent_colors = {
         "LolCat": Fore.MAGENTA,
-        get_name(): Fore.BLUE,
-        get_elevenl_labs_name(): Fore.YELLOW,
+        get_user_name(): Fore.BLUE,
+        get_chatgpt_name(): Fore.YELLOW,
     }
     color = agent_colors.get(agent, "")
     print(color + f"{agent}: {text}" + Style.RESET_ALL, end="")
 
-# Fix for potential buffering issue: force flushing of printed characters
 def flush_print():
+    """
+    Fix for potential buffering issue: force flushing of printed characters
+    """
     print("", end='', flush=True)
