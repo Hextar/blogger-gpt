@@ -6,7 +6,7 @@ Python 3 was used to develop this project.
 
 # Install
 1. Install ffmpeg. On mac use 'brew install ffmpeg'. On linux/windows check https://ffmpeg.org/
-2. Run `sudo apt install python3-pyaudio`
+2. Install pyaudio. On mac use `brew install portaudio`. On linux  use `sudo apt-get install portaudio19-dev`.
 3. Run `pip install -r requirements.txt`
 4. Duplicate the `.env-example` file and rename it `.env`
 5. Fill in your api keys within `.env`

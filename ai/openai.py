@@ -3,7 +3,7 @@ import openai
 from utils.template import get_prompt
 from utils.config import get_template, get_open_ai_api_key, get_open_ai_model
 
-template = get_prompt(get_template())
+template = get_prompt()
 conversation = []
 
 

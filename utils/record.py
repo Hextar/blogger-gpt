@@ -1,60 +1,52 @@
 import asyncio
 import speech_recognition as sr
+from yaspin import yaspin
 
-# Initialize speech recognition engine
 recognizer = sr.Recognizer()
 
+async def non_blocking_input(prompt, queue):
+    await asyncio.get_event_loop().run_in_executor(None, input, prompt)
+    await queue.put("stop")
+
+async def capture_audio(timeout, queue):
+    with sr.Microphone() as source:
+        try:
+            with yaspin(text="🎤 Recording...", spinner="dots12") as spinner:
+                spinner.start()
+                audio = await asyncio.get_event_loop().run_in_executor(None, lambda: recognizer.listen(source, timeout=timeout))
+                await queue.put(audio)
+        except sr.WaitTimeoutError:
+            await queue.put("timeout")
 
 async def record_and_transcribe(timeout=30):
-    """
-    Call the record function to record the user voice, waits for the
-    recording to complete and then perform the recording transcript
-    which will be then returned
-    """
-    loop = asyncio.get_event_loop()
+    queue = asyncio.Queue()
 
-    def capture_audio():
-        with sr.Microphone() as source:
-            print("Listening...")
-            try:
-                audio = recognizer.listen(source, timeout)
-                return audio
-            except sr.WaitTimeoutError:
-                print("Recording timed out.")
-                return None
+    input_coro = non_blocking_input("Press Enter to stop recording: ", queue)
+    capture_coro = capture_audio(timeout, queue)
 
-    try:
-        future = loop.run_in_executor(None, capture_audio)
-        user_input_task = loop.run_in_executor(
-            None,
-            input,
-            "Press Enter to stop recording: "
-        )
-        done, pending = await asyncio.wait(
-            [future, user_input_task],
-            return_when=asyncio.FIRST_COMPLETED
-        )
+    tasks = [input_coro, capture_coro]
+    done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
 
-        # Cancel any pending tasks
-        for task in pending:
-            task.cancel()
+    # Cancel any pending tasks
+    for task in pending:
+        task.cancel()
 
-        # Get the result from the completed task
-        audio = done.pop().result()
+    # Check if we have something in the queue and get the result
+    if not queue.empty():
+        result = await queue.get()
 
-        if audio:
-            print("Recognizing...")
-            try:
-                text = recognizer.recognize_google(audio)
-                return text
-            except sr.UnknownValueError:
-                print("Could not understand audio")
-            except sr.RequestError as e:
-                print(f"Error during recognition: {e}")
-
-    except asyncio.CancelledError:
-        print("Recording canceled.")
-
-
-if __name__ == "__main__":
-    asyncio.run(record_and_transcribe())
+        if isinstance(result, sr.AudioData):
+            with yaspin(text="💭 Recognizing...", spinner="dots12") as spinner:
+                spinner.start()
+                try:
+                    text = recognizer.recognize_google(result)
+                    return text
+                except sr.UnknownValueError:
+                    print("Could not understand audio")
+                    return None
+                except sr.RequestError as e:
+                    print(f"Error during recognition: {e}")
+                    return None
+    else:
+        print("Recording was not successful.")
+        return None

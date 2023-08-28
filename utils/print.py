@@ -1,23 +1,10 @@
 import time
 from colorama import Fore, Style, init
 
+from utils.config import get_template
 from utils.template import get_user_name, get_chatgpt_name
 
 init()
-
-
-def print_wave_spinner(text):
-    """
-    Print a wave-like spinner animation followed by the given text.
-
-    Args:
-        text (str): Text to display before the spinner animation.
-    """
-    for frame in [".·˙·.", "..·˙·", "·..·˙", "˙·..·", "·˙·..", ".·˙·."]:
-        print(f"\r{text} {frame}", end='', flush=True)
-        time.sleep(0.1)  # Add a small delay between frames
-    print("\r" + " " * len(text), end='', flush=True)  # Clear the spinner animation
-    print(f"\r{text}", end='', flush=True)  # Print the text without animation
 
 
 def print_colored(agent, text):

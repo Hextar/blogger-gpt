@@ -11,6 +11,13 @@ def get_template():
     return os.getenv('TEMPLATE')
 
 
+def get_silent():
+    """
+    Get the silent option.
+    """
+    return os.getenv('SILENT')
+
+
 def get_open_ai_api_key():
     """
     Get Open AI API Key.

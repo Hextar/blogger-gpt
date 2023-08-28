@@ -1,7 +1,9 @@
 import yaml
 
+from utils.config import get_template
 
-def load_template(file_name):
+
+def load_template(file_name=get_template()):
     """
     Load a template from a given file path.
 
@@ -22,56 +24,41 @@ def load_template(file_name):
     return data
 
 
-def get_lang(file_name):
+def get_lang():
     """
     Get the lang that ChatGPT should use.
-
-    Args:
-        file_name, the template file name
     """
-    data = load_template(file_name)
+    data = load_template()
     return data.get('lang', 'en')
 
 
-def get_chatgpt_name(file_name):
+def get_chatgpt_name():
     """
     Get the name that ChatGPT should use.
-
-    Args:
-        file_name, the template file name
     """
-    data = load_template(file_name)
+    data = load_template()
     return data.get('chatgpt_name', 'Chatgpt')
 
 
-def get_eleven_labs_voice(file_name):
+def get_eleven_labs_voice():
     """
     Get the voice tha Eleven Labs should use.
-
-    Args:
-        file_name, the template file name
     """
-    data = load_template(file_name)
+    data = load_template()
     return data.get('eleven_labs_voice', 'Dorothy')
 
 
-def get_user_name(file_name):
+def get_user_name():
     """
     Get the name that should be used to refer to the user.
-
-    Args:
-        file_name, the template file name
     """
-    data = load_template(file_name)
+    data = load_template()
     return data.get('user_name', 'User')
 
 
-def get_prompt(file_name):
+def get_prompt():
     """
     Get the prompt to set ChatGPT's behavior.
-
-    Args:
-        file_name, the template file name
     """
-    data = load_template(file_name)
+    data = load_template()
     return data.get('prompt', '')
