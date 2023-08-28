@@ -8,7 +8,6 @@ from utils.print import print_colored
 from utils.template import get_user_name, get_chatgpt_name
 from utils.terminate import check_termination_condition
 
-
 async def main():
     print(f"Starting template {get_template()}\n\n")
 
