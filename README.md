@@ -5,11 +5,12 @@ Talk To ChatGPT using a voice-to-voice approach
 Python 3 is used for this project
 
 # Install
-1. Run `sudo apt install python3-pyaudio`
-2. Run `pip install -r requirements.txt`
-3. Duplicate the `.env-example` file and rename it `.env`
-4. Fill in your api keys within `.env`
-5. Run `python main.py`
+1. Install ffmpeg. On mac use 'brew install ffmpeg'. On linux/windows check https://ffmpeg.org/
+2. Run `sudo apt install python3-pyaudio`
+3. Run `pip install -r requirements.txt`
+4. Duplicate the `.env-example` file and rename it `.env`
+5. Fill in your api keys within `.env`
+6. Run `python main.py`
 
 # Customize
 You're going to chat with chat-gpt using the pre-made template found within

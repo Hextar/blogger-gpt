@@ -4,10 +4,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def get_name():
-  return os.getenv('MY_NAME')
+  return os.getenv('NAME', 'User')
 
 def get_lang():
   return os.getenv('LANG')
+
+def get_filename():
+  return os.getenv('TEMP_FILENAME')
 
 def get_prompt(filepath):
   with open(filepath, 'r', encoding='utf-8') as infile:

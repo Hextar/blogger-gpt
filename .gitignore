@@ -1,2 +1,8 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+__pycache__/
+utils/__pycache__/*
+*.py[cod]
+
 .env
-google-cloud
+.temp/myrecording.wav

@@ -1,17 +1,39 @@
+import asyncio
 import openai
 import os
 import sounddevice as sd
 import soundfile as sf
 import keyboard
+from utils.print import print_wave_spinner
 from utils.config import (
   get_prompt,
   get_open_ai_api_key,
-  get_open_ai_model
+  get_open_ai_model,
+  get_filename,
 )
 
 template = get_prompt('templates/therapist.txt')
 conversation = []  
 
+# Call the record function to record the user voice, waits for the
+# recording to complete and then perform the recording transcript
+# which will be then returned
+# async def record_and_transcribe():
+#     recording_done = asyncio.Event()  # Create an event for signaling recording done
+#     recording_result = await asyncio.gather(record_voice(recording_done))
+#     print(recording_result[0])
+
+#     with open(get_filename(), "rb") as file:
+#         openai.api_key = get_open_ai_api_key()
+#         result = openai.Audio.transcribe("whisper-1", file)
+
+#     transcription = result['text']
+
+#     print('[DEBUG] Transcription complete.', transcription)
+
+#     return transcription
+
+# Send a text message to chatgpt and await for a text answer
 def chatgpt(user_input, temperature=0.9, frequency_penalty=0.2, presence_penalty=0):
     openai.api_key = get_open_ai_api_key()
     conversation.append({"role": "user","content": user_input})
@@ -28,15 +50,3 @@ def chatgpt(user_input, temperature=0.9, frequency_penalty=0.2, presence_penalty
     conversation.append({"role": "assistant", "content": chat_response})
     return chat_response
 
-def record_and_transcribe(duration=12, fs=44100):
-    print('Recording...')
-    myrecording = sd.rec(int(duration * fs), samplerate=fs, channels=1)
-    sd.wait()
-    print('Recording complete.')
-    filename = 'temp/myrecording.wav'
-    sf.write(filename, myrecording, fs)
-    with open(filename, "rb") as file:
-        openai.api_key = get_open_ai_api_key()
-        result = openai.Audio.transcribe("whisper-1", file)
-    transcription = result['text']
-    return transcription
