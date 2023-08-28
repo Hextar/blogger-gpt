@@ -11,17 +11,17 @@ Be sure to match the name of an existing file within this directory.
 To create a new template you should use the following
 yaml keys.
 
-#### chatgpt_name
+### chatgpt_name
 Name that will be used for the bot
 
-#### user_name
+### user_name
 Name that the bot will refer the user to
 
-#### eleven_labs_voice
+### eleven_labs_voice
 Voice name used by 11-labs speech synthesis
 (check it here: elevenlabs.io/speech-synthesis)
 
-#### prompt
+### prompt
 Chat GPT prompt
 
 Tip: remember that prepending the prompt with the `|` symbol allow you to
