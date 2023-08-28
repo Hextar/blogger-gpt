@@ -4,6 +4,7 @@ import speech_recognition as sr
 # Initialize speech recognition engine
 recognizer = sr.Recognizer()
 
+
 async def record_and_transcribe():
     """
     Call the record function to record the user voice, waits for the
@@ -16,7 +17,8 @@ async def record_and_transcribe():
         with sr.Microphone() as source:
             print("Listening...")
             try:
-                audio = recognizer.listen(source, timeout=5)  # Set a timeout (5 seconds in this case)
+                # Set a timeout (5 seconds in this case)
+                audio = recognizer.listen(source, timeout=5)
                 return audio
             except sr.WaitTimeoutError:
                 print("Recording timed out.")
@@ -24,8 +26,15 @@ async def record_and_transcribe():
 
     try:
         future = loop.run_in_executor(None, capture_audio)
-        user_input_task = loop.run_in_executor(None, input, "Press Enter to stop recording: ")
-        done, pending = await asyncio.wait([future, user_input_task], return_when=asyncio.FIRST_COMPLETED)
+        user_input_task = loop.run_in_executor(
+            None,
+            input,
+            "Press Enter to stop recording: "
+        )
+        done, pending = await asyncio.wait(
+            [future, user_input_task],
+            return_when=asyncio.FIRST_COMPLETED
+        )
 
         # Cancel any pending tasks
         for task in pending:
@@ -46,6 +55,7 @@ async def record_and_transcribe():
 
     except asyncio.CancelledError:
         print("Recording canceled.")
+
 
 if __name__ == "__main__":
     asyncio.run(record_and_transcribe())
