@@ -29,9 +29,9 @@ Can be used to specify ELEVEN_LABS_ACCENTS (Currently not being used).
 
 Choose the STS template, discover more [here](/templates/TEMPLATES.md).
 
-#### SILENT
+#### DEBUG
 
-Skip the text to speech step to spare eleven labs quotas.
+Use basic python text to speech step to spare eleven labs quotas.
 
 #### READING SPEED
 

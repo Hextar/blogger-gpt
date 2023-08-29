@@ -31,6 +31,14 @@ def get_chatgpt_name():
     return data.get('chatgpt_name', 'Chatgpt')
 
 
+def get_chatgpt_pronoun():
+    """
+    Get the pronoun that ChatGPT should use.
+    """
+    data = load_template()
+    return data.get('chatgpt_pronoun', 'They')
+
+
 def get_eleven_labs_voice():
     """
     Get the voice tha Eleven Labs should use.

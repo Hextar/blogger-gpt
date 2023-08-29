@@ -1,7 +1,7 @@
 from colorama import Fore, Style, init
+import re
 import shutil
 
-from utils.config import get_template
 from utils.template import get_user_name, get_chatgpt_name
 
 init()
@@ -33,8 +33,18 @@ def print_colored(agent, text):
         get_user_name(): Fore.BLUE,
         get_chatgpt_name(): Fore.GREEN,
     }
+
     color = agent_colors.get(agent, "")
-    print(color + f"{agent}: {text}" + Style.RESET_ALL, end="")
+
+    # Make sure not to include prepended text that Chat GPT
+    # sometime automatically adds
+    cleared_text = re.sub(
+        r'(Response:|Narration:|Image: generate_image:.*|get_user_name():|get_chatgpt_name():)',
+        '',
+        text
+    ).strip()
+
+    print(color + f"{agent}: {cleared_text}" + Style.RESET_ALL, end="")
 
 
 def flush_print():

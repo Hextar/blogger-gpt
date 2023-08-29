@@ -11,12 +11,12 @@ def get_template():
     return os.getenv('TEMPLATE')
 
 
-def get_silent():
+def get_debug():
     """
-    Get the silent option.
+    Get the debug option.
     """
-    silent = os.getenv('SILENT')
-    return silent == '1' or silent == 1
+    debug = os.getenv('DEBUG')
+    return debug == '1' or debug == 1
 
 def get_reading_speed():
     """

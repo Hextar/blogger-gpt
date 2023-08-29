@@ -1,6 +1,9 @@
 # Name that will be used for the bot
 chatgpt_name: Peter
 
+# Pronoun that will be used for the bot
+chatgpt_pronoun: He
+
 # Name that the bot will refer the user to
 user_name: Kris
 

@@ -1,12 +1,20 @@
 # Name that will be used for the bot
 chatgpt_name: Julie
 
+# Pronoun that will be used for the bot
+chatgpt_pronoun: She
+
 # Name that the bot will refer the user to
 user_name: Kris
 
 # Voice name used by eleven labs
 # (check it here: elevenlabs.io/speech-synthesis)
 eleven_labs_voice: Dorothy
+
+# Decide who's going to talk first in the chat
+# 0 means the user will start
+# 1 means ChatGPT goes first
+chat_got_goes_first: 1
 
 # ChatGPT prompt
 prompt: |
@@ -25,3 +33,6 @@ prompt: |
 
   Kris got a big assignment coming up at his work as a Partner,
   and he his very anxious about this.
+
+  If you're the one starting the conversation you greet him and do
+  some small talk before addressing the therapy directly

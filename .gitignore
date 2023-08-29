@@ -68,3 +68,5 @@ htmlcov/
 
 # Cache
 .cache/
+
+.temp
