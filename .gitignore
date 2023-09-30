@@ -70,3 +70,6 @@ htmlcov/
 .cache/
 
 .temp
+
+# Output files
+/outputs/

@@ -2,7 +2,7 @@ from colorama import Fore, Style, init
 import re
 import shutil
 
-from utils.template import get_user_name, get_chatgpt_name
+from utils.agent import get_chatgpt_name
 
 init()
 
@@ -20,6 +20,29 @@ def print_full_line(character="-"):
     print()
 
 
+def print_empty_line():
+    """
+    Print an empty line.
+    """
+    print("\n")
+
+
+def print_word_count(input="-"):
+    """
+    Print an input word count.
+
+    Args:
+        input (str): The input to perform the word count.
+    """
+    # Split the string into words using spaces as separators
+    words = re.findall(r'\b\w+\b', input)
+
+    # Count the number of words
+    word_count = len(words)
+
+    print(f"🔢 Number of words: \033[1m{word_count}\033[0m.\n")
+
+
 def print_colored(agent, text):
     """
     Print some colored message with an agent followed by the given text
@@ -29,8 +52,6 @@ def print_colored(agent, text):
         text (str): What the agent is saying
     """
     agent_colors = {
-        "LolCat": Fore.MAGENTA,
-        get_user_name(): Fore.BLUE,
         get_chatgpt_name(): Fore.GREEN,
     }
 
@@ -39,7 +60,7 @@ def print_colored(agent, text):
     # Make sure not to include prepended text that Chat GPT
     # sometime automatically adds
     cleared_text = re.sub(
-        r'(Response:|Narration:|Image: generate_image:.*|get_user_name():|get_chatgpt_name():)',
+        r'(Response:|Narration:|Image: generate_image:.*||get_chatgpt_name():)',
         '',
         text
     ).strip()

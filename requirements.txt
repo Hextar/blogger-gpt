@@ -1,9 +1,7 @@
 asyncio
 colorama==0.4.6
+halo
 python-dotenv==1.0.0
 PyYAML==6.0.1
-SpeechRecognition==3.10.0
-PyAudio
-playsound
 openai
-elevenlabs
+pyperclip

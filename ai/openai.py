@@ -1,9 +1,8 @@
 import openai
 
-from utils.template import get_prompt
-from utils.config import get_template, get_open_ai_api_key, get_open_ai_model
+from utils.agent import get_chatgpt_prompt
+from utils.config import get_open_ai_api_key, get_open_ai_model
 
-template = get_prompt()
 conversation = []
 
 
@@ -14,7 +13,7 @@ def chatgpt(user_input, temperature=0.9, frequency_penalty=0.2, presence_penalty
     openai.api_key = get_open_ai_api_key()
     conversation.append({"role": "user", "content": user_input})
     messages_input = conversation.copy()
-    prompt = [{"role": "system", "content": template}]
+    prompt = [{"role": "system", "content": get_chatgpt_prompt(user_input)}]
     messages_input.insert(0, prompt[0])
     completion = openai.ChatCompletion.create(
         model=get_open_ai_model(),

@@ -18,12 +18,6 @@ def get_debug():
     debug = os.getenv('DEBUG')
     return debug == '1' or debug == 1
 
-def get_reading_speed():
-    """
-    Get the reading speed option.
-    """
-    return os.getenv('READING_SPEED')
-
 
 def get_open_ai_api_key():
     """
@@ -37,17 +31,3 @@ def get_open_ai_model():
     Get Open AI Model.
     """
     return os.getenv('OPEN_AI_MODEL')
-
-
-def get_eleven_labs_api_key():
-    """
-    Get Eleven labs API Key.
-    """
-    return os.getenv('ELEVEN_LABS_API_KEY')
-
-
-def get_eleven_labs_model():
-    """
-    Get Eleven labs model.
-    """
-    return os.getenv('ELEVEN_LABS_MODEL')

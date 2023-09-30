@@ -1,5 +1,4 @@
-These directory contains the templates you can choose from to try this
-speech-to-speech implementation.
+These directory contains the templates you can choose from to let Chat GPT behave as different agents.
 
 # Choose a different template
 
