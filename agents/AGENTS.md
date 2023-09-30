@@ -1,15 +1,15 @@
-These directory contains the templates you can choose from to let Chat GPT behave as different agents.
+These directory contains the agents you can choose from to let Chat GPT behave as different agents.
 
-# Choose a different template
+# Choose a different agent
 
-You can choose a different template by changing the TEMPLATE value
+You can choose a different agent by changing the AGENT value
 in your `.env` file.
 
 Be sure to match the name of an existing file within this directory.
 
-# Create a new template
+# Create a new agent
 
-To create a new template you should use the following
+To create a new agent you should use the following
 yaml keys.
 
 ### chatgpt_name

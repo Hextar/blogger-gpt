@@ -1,18 +1,18 @@
 import yaml
 
-from utils.config import get_template
+from utils.config import get_agent
 
 
-def load_template(file_name=get_template()):
+def load_agent(file_name=get_agent()):
     """
-    Load a template from a given file path.
+    Load a agent from a given file path.
 
     Args:
-        file_name, the template file name
+        file_name, the agent file name
     """
-    # Add "templates/" prefix if not already present
-    if not file_name.startswith("templates/"):
-        file_name = "templates/" + file_name
+    # Add "agents/" prefix if not already present
+    if not file_name.startswith("agents/"):
+        file_name = "agents/" + file_name
 
     # Add ".yaml" extension if not already present
     if not file_name.endswith(".yaml"):
@@ -28,7 +28,7 @@ def get_chatgpt_name():
     """
     Get the name that ChatGPT should use.
     """
-    data = load_template()
+    data = load_agent()
     return "[name] Your name is " + data.get('chatgpt_name', 'Chatgpt')
 
 
@@ -36,7 +36,7 @@ def get_chatgpt_role():
     """
     Get the role that ChatGPT should cover.
     """
-    data = load_template()
+    data = load_agent()
     return "[role] " + data.get('chatgpt_role', 'Chatgpt')
 
 
@@ -44,7 +44,7 @@ def get_chatgpt_emotional_tone():
     """
     Get the emotional tone that ChatGPT should user.
     """
-    data = load_template()
+    data = load_agent()
     return "[emotional_tone] " + data.get('chatgpt_emotional_tone', 'Chatgpt')
 
 
@@ -52,7 +52,7 @@ def get_chatgpt_competency():
     """
     Get the competency that ChatGPT should cover.
     """
-    data = load_template()
+    data = load_agent()
     return "[competency] " + data.get('chatgpt_competency', 'Chatgpt')
 
 
@@ -60,7 +60,7 @@ def get_chatgpt_workflow():
     """
     Get the workflow that ChatGPT should follow.
     """
-    data = load_template()
+    data = load_agent()
     return "[workflow] " + data.get('chatgpt_workflow', 'Chatgpt')
 
 
@@ -68,7 +68,7 @@ def get_chatgpt_goal(title = ""):
     """
     Get the goal that ChatGPT should follow.
     """
-    data = load_template()
+    data = load_agent()
     return "[goal] " + data.get('chatgpt_goal', 'Chatgpt').replace('{title}', title)
 
 

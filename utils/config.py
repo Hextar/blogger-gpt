@@ -4,11 +4,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def get_template():
+def get_agent():
     """
-    Get the template to be used.
+    Get the agent to be used.
     """
-    return os.getenv('TEMPLATE')
+    return os.getenv('AGENT')
 
 
 def get_debug():

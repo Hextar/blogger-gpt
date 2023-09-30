@@ -2,7 +2,7 @@ import asyncio
 
 from ai.openai import chatgpt
 from pyperclip import copy
-from utils.config import get_debug, get_template
+from utils.config import get_debug, get_agent
 from utils.io import save_string_to_txt
 from utils.print import (
   print_colored,
@@ -44,7 +44,7 @@ async def main():
     print_full_line()
     if get_debug():
         print(f"🔧 Debug mode is enabled.\n")
-    print(f"💬 Starting template chat: \033[1m{get_template()}\033[0m.\n")
+    print(f"💬 Starting chat with agent: \033[1m{get_agent()}\033[0m.\n")
 
     while True:
         print_full_line()

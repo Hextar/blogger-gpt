@@ -19,9 +19,9 @@ Before running this implementation you need to add some configs creating a `.env
 
 Tip: duplicate the `.env-example` file and rename it.
 
-#### TEMPLATE
+#### AGENT
 
-Choose the desired template, discover more [here](/templates/TEMPLATES.md).
+Choose the desired agent, discover more [here](/agents/AGENTS.md).
 
 #### DEBUG
 
