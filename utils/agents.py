@@ -3,12 +3,12 @@ from simple_term_menu import TerminalMenu
 import os
 
 
-def load_agents(directory = "agents"):
+def load_agents(directory="agents"):
     """
     Load menu options with filenames from YAML files in the specified directory.
 
     Returns:
-        list: List of menu options containing filenames.
+        list: List of menu options, each containing a dictionary with "label" and "filename" keys, sorted by "label".
     """
     menu_options = []
 
@@ -17,9 +17,17 @@ def load_agents(directory = "agents"):
         # Loop through files in the directory
         for filename in os.listdir(directory):
             if filename.endswith(".yaml") or filename.endswith(".yml"):
-                menu_options.append(filename)
+                # Create a dictionary for each menu option
+                option_dict = {
+                    "label": os.path.splitext(filename)[0].capitalize(),
+                    "filename": filename,
+                }
+                menu_options.append(option_dict)
 
-    return menu_options
+    # Sort the list of dictionaries by the "label" key
+    sorted_menu_options = sorted(menu_options, key=lambda x: x["label"])
+
+    return sorted_menu_options
 
 
 def show_menu():
@@ -31,13 +39,13 @@ def show_menu():
     """
     menu_entries = load_agents()
     terminal_menu = TerminalMenu(
-        menu_entries=menu_entries,
+        menu_entries=[agent["label"] for agent in menu_entries],
         title="🕵️  Please select an Agent:",
         menu_cursor="👉 ",
         cycle_cursor=True,
     )
     menu_entry_index = terminal_menu.show()
-    return menu_entries[menu_entry_index]
+    return menu_entries[menu_entry_index]["filename"]
 
 
 def extract_data_from_yaml(file_path):
@@ -60,28 +68,18 @@ def extract_data_from_yaml(file_path):
         print(f"❌ Error loading data from YAML file: {e}")
 
 
-def get_initial_prompt(agent_name, blog_post_title, blog_post_keywords):
+def get_initial_prompt(agent_name):
     """
     Retrieve the initial prompt that ChatGPT will use.
 
     Args:
         :param agent_name: The agent name.
-        :param blog_post_title: The string to replace {title} in the "goal" key.
-        :param blog_post_keywords: The string to replace {comma_separated_list_of_keywords} in the "goal" key.
         :return: A string representation of the dictionary.
     """
     initial_prompt_dict = extract_data_from_yaml(agent_name)
     output_str = ""
 
     for key, value in initial_prompt_dict.items():
-        # Replace {title} in the "goal" key if provided
-        if key == "goal" and blog_post_title:
-            value = value.replace("{title}", blog_post_title)
-
-        # Replace {comma_separated_list_of_keywords} in the "keywords" key if provided
-        if key == "goal" and blog_post_keywords:
-            value = value.replace("{comma_separated_list_of_keywords}", blog_post_keywords)
-        
         output_str += f"[{key}]\n{value}\n\n"
     
     return output_str

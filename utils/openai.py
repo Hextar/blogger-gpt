@@ -1,3 +1,5 @@
+# OUTDATED, converting everything to use utils/langchain.py now
+
 import openai
 
 from .config import get_open_ai_api_key, get_open_ai_model
