@@ -1,7 +1,6 @@
-import os
-
-from utils.openai import query_gpt_for_blog
 from utils.agents import get_initial_prompt, show_menu
+from utils.io import save_string_to_txt
+from utils.openai import query_gpt_for_blog
 from utils.print import (
     print_colored,
     print_empty_line,
@@ -25,22 +24,22 @@ def main():
         blog_post_keywords = input(f"🔑 Blog post comma separated keywords: ")
         print()
 
-        # Not blocking the UX if the user message is empty
+        # Making sure that the user has entered a valid blog post title
         if not (blog_post_title):
             print(f"🔧 Please enter a valid title.\n")
             continue # skip to the next loop
 
         initial_prompt = get_initial_prompt(agent, blog_post_title, blog_post_keywords)
 
-        response = query_gpt_for_blog(initial_prompt, blog_post_title)
+        response = query_gpt_for_blog(initial_prompt)
 
-        print_colored("ChatGPT", f"{response}\n\n")
-        print_empty_line()
         print_word_count(response)
+
+        save_string_to_txt(response, blog_post_title)
 
         print_full_line()
 
-        os.system.exit()
+        exit()
 
 
 if __name__ == "__main__":

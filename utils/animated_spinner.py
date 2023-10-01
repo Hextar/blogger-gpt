@@ -5,8 +5,6 @@ import sys
 class Spinner:
     def __init__(self, leading_text):
         self.leading_text = leading_text
-        # self.spinner_chars = ["|", "/", "-", "\\"]
-        # self.spinner_chars = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
         self.spinner_chars = [
             "🖊️  ", "🖊️  ", "🖊️  ",
             "_🖊️ ", "_🖊️ ", "_🖊️ ",

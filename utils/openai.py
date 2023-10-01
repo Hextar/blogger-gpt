@@ -1,7 +1,6 @@
 import openai
 
 from .config import get_open_ai_api_key, get_open_ai_model
-from .io import save_string_to_txt
 from .print import print_animated_loader, print_empty_line
 
 
@@ -35,7 +34,7 @@ def chat_with_gpt(
     return chat_response
 
 
-def query_gpt_for_blog(initial_prompt, blog_post_title):
+def query_gpt_for_blog(initial_prompt):
     animated_loader = print_animated_loader("📜 Writing")
 
     try:
@@ -46,9 +45,6 @@ def query_gpt_for_blog(initial_prompt, blog_post_title):
 
         animated_loader.stop()
         print_empty_line()
-        print("✅ Completed!\n")
-
-        save_string_to_txt(response, blog_post_title)
 
         return response
     except Exception as e:

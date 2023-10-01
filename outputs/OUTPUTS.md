@@ -1,2 +1,0 @@
-Here you're going to find all results outputted by
-the Blogger GPT tool
