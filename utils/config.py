@@ -4,13 +4,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def get_agent():
-    """
-    Get the agent to be used.
-    """
-    return os.getenv('AGENT')
-
-
 def get_debug():
     """
     Get the debug option.

@@ -72,4 +72,5 @@ htmlcov/
 .temp
 
 # Output files
-/outputs/
+outputs/*
+!outputs/OUTPUTS.md

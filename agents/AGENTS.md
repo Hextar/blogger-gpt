@@ -1,33 +1,59 @@
-These directory contains the agents you can choose from to let Chat GPT behave as different agents.
+These directory contains the agents you can choose from to let Chat GPT assume different roles.
 
 # Choose a different agent
 
-You can choose a different agent by changing the AGENT value
-in your `.env` file.
+When starting BloggerAgent you will be asked to
+choose which agent to use for you next blog post.
 
-Be sure to match the name of an existing file within this directory.
+All the .yaml/.yml files in this directory will
+be automatically included at that point.
 
 # Create a new agent
 
 To create a new agent you should use the following
 yaml keys.
 
-### chatgpt_name
+### name
 
 Name that will be used for the bot
 
-### user_name
+### role
 
-Name that the bot will refer the user to
+The role assumed by the bot
+```
+you're a crypto expert
+```
 
-### eleven_labs_voice
 
-Voice name used by 11-labs speech synthesis
-(check it here: elevenlabs.io/speech-synthesis)
+### emotional_tone
 
-### prompt
+The tone used by the bot
 
-ChatGPT prompt
+example:
+```
+youthful writing, accessible and trustable
+```
 
-Tip: remember that prepending the prompt with the `|` symbol allow you to
-specify a multiline description which will be easier to read.
+### competency
+
+The set of skills the bot has
+
+example:
+```
+- Seo expert
+```
+
+### workflow
+
+The process followed when writing a blog post
+
+example:
+```
+- write an outline
+- search on the internet for sources
+```
+
+### goal
+
+The bot final goal, the title or any extra information
+about the blog post its going to write

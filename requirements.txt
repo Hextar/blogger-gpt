@@ -1,7 +1,9 @@
 asyncio
 colorama==0.4.6
-halo
+simple_term_menu
 python-dotenv==1.0.0
 PyYAML==6.0.1
+langchain
 openai
+pyyaml
 pyperclip

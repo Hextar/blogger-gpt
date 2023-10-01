@@ -1,8 +1,8 @@
 from colorama import Fore, Style, init
 import re
 import shutil
+from .animated_spinner import print_animated_loader as _print_animated_loader
 
-from utils.agent import get_chatgpt_name
 
 init()
 
@@ -52,7 +52,7 @@ def print_colored(agent, text):
         text (str): What the agent is saying
     """
     agent_colors = {
-        get_chatgpt_name(): Fore.GREEN,
+        'Chat GPT': Fore.GREEN,
     }
 
     color = agent_colors.get(agent, "")
@@ -60,7 +60,7 @@ def print_colored(agent, text):
     # Make sure not to include prepended text that Chat GPT
     # sometime automatically adds
     cleared_text = re.sub(
-        r'(Response:|Narration:|Image: generate_image:.*||get_chatgpt_name():)',
+        r'(Response:|Narration:|Image: generate_image:.*||Chat GPT:)',
         '',
         text
     ).strip()
@@ -73,3 +73,14 @@ def flush_print():
     Fix for potential buffering issue: force flushing of printed characters
     """
     print("", end='', flush=True)
+
+
+def print_animated_loader(leading_text):
+    """
+    Display a given leading text followed by an animated loading icon.
+
+    Args:
+        leading_text (str): The leading text to display.
+    """
+    return _print_animated_loader(leading_text)
+
