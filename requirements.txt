@@ -1,9 +1,8 @@
-asyncio
 colorama==0.4.6
-simple_term_menu
+chainlit
+duckduckgo-search
+openai==0.28.1
+langchain==0.0.305
 python-dotenv==1.0.0
 PyYAML==6.0.1
-langchain
-openai
-pyyaml
-pyperclip
+simple_term_menu==1.6.1

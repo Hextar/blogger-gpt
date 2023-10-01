@@ -1,4 +1,4 @@
-from utils.agents import get_initial_prompt, show_menu
+from utils.agents import show_menu
 from utils.io import save_string_to_txt
 from utils.langchain import query_gpt_for_blog
 from utils.print import (
@@ -8,6 +8,8 @@ from utils.print import (
 
 
 def main():
+    print(f"📝 BloggerGPT ready to start!\n")
+
     print_full_line()
 
     # Let the user choose an agent to use
@@ -27,9 +29,7 @@ def main():
             print(f"🔧 Please enter a valid title.\n")
             continue # skip to the next loop
 
-        initial_prompt = get_initial_prompt(agent)
-
-        response = query_gpt_for_blog(initial_prompt, blog_post_title, blog_post_keywords)
+        response = query_gpt_for_blog(f"agents/{agent}", blog_post_title, blog_post_keywords)
 
         print_word_count(response)
 
